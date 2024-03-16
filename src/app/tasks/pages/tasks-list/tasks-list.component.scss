@@ -1,0 +1,42 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+
+
+  .container {
+    //outline: 2px solid blue;
+    width: 800px;
+  }
+
+  .toolbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 60px;
+    width: 100%;
+    background: #F5F5F5;
+
+    .toolbar-wrap {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .add-button{
+      padding: 0;
+      width: 84px;
+    }
+
+    .mat-mdc-raised-button .mdc-button__label {
+      display: flex !important;
+    }
+
+  }
+
+  .tasks-wrap {
+    margin: 14px 0;
+  }
+
+
+}

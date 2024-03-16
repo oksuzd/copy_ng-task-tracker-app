@@ -1,0 +1,61 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .task-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 500px;
+    height: 30px;
+  }
+
+  .task-card__left, .task-card__right {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .task-card__left {
+    //outline: 1px solid red;
+  }
+
+  .check-box {
+    margin: 0 4px;
+  }
+
+  .performer {
+    //outline: 1px solid blue;
+    width: 24px;
+    height: 24px;
+    margin: 0 4px;
+    border-radius: 100%;
+    background: rgba(148, 148, 148, 0.6);
+    text-align: center;
+    line-height: 24px;
+  }
+
+  .date{
+    //outline: 1px solid green;
+    width: 38px;
+    height: 24px;
+    margin: 0 4px;
+    text-align: center;
+    line-height: 24px;
+    color: #13a93c;
+    font-weight: 500;
+  }
+
+  .priority {
+    //outline: 1px solid black;
+    width: 24px;
+    height: 24px;
+    margin: 0 4px;
+    border-radius: 100%;
+    background: #ef0808;
+    text-align: center;
+    line-height: 24px;
+    color: #fff
+  }
+}

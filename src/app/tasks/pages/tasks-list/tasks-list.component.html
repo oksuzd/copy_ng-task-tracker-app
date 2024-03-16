@@ -1,1 +1,17 @@
-<p>tasks-list works!</p>
+<div class="toolbar">
+  <div class="container toolbar-wrap">
+    <div class="settings">
+      <span class="filter">Filter</span>
+      <span class="sorting">Sorting</span>
+    </div>
+    <button mat-raised-button color="primary" class="add-button">
+      <span>Add Task</span>
+    </button>
+    <!--    <a mat-button routerLink="/task/{{57768799}}">Detailed Task</a>-->
+  </div>
+</div>
+<div class="container">
+  <div class="tasks-wrap">
+    <app-task-item></app-task-item>
+  </div>
+</div>
