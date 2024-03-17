@@ -1,0 +1,38 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+
+  .container {
+    width: 800px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .detailed-task {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+
+
+  .detailed-task__left {
+    width: 546px;
+  }
+
+  .detailed-task__right {
+    width: 210px;
+    background: #F5F5F5;
+  }
+
+  .task-buttons-group {
+    justify-content: center;
+    gap: 20px;
+    margin: 8px 0;
+
+    button {
+      width: 82px;
+    }
+  }
+}

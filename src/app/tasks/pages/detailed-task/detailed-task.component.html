@@ -1,1 +1,32 @@
-<p>detailed-task works!</p>
+<div class="container">
+  <app-back-button></app-back-button>
+  <mat-card class="detailed-task">
+    <div class="detailed-task__left">
+      <mat-card-header>
+        <mat-card-title class="task-title">Finish test task</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="task-details">
+        <p>Description. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquid dolorem fuga harum
+          nesciunt praesentium repellat repellendus voluptate! Consectetur dignissimos expedita in iusto nam nulla quae
+          quis repellendus sapiente velit?
+        </p>
+      </mat-card-content>
+      <mat-card-actions class="task-buttons-group">
+        <button mat-raised-button color="primary">Edit</button>
+        <button mat-raised-button>Delete</button>
+      </mat-card-actions>
+    </div>
+    <div class="detailed-task__right">
+      <mat-card-content class="task-details">
+        <mat-card-subtitle>Deadline</mat-card-subtitle>
+        <div class="deadline">19 of March 2024</div>
+        <mat-card-subtitle>Priority</mat-card-subtitle>
+        <div class="priority">P1</div>
+        <mat-card-subtitle>Assigned to</mat-card-subtitle>
+        <div class="assigned-to">Oksana Suzdaltseva</div>
+      </mat-card-content>
+
+    </div>
+
+  </mat-card>
+</div>

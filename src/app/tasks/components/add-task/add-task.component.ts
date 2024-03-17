@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialogRef } from "@angular/material/dialog";
 
 @Component({
   selector: 'app-add-task',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-task.component.scss']
 })
 export class AddTaskComponent {
+  constructor(public dialogRef: MatDialogRef<AddTaskComponent>) {}
 
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }

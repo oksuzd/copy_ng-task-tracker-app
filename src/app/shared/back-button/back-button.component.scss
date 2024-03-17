@@ -1,0 +1,10 @@
+:host {
+  .back-button {
+    width: 45px;
+    height: 45px;
+    min-width: unset;
+    min-height: unset;
+    border-radius: 5px 0 0 5px;
+    background: #3F51B5 url("../../../assets/icons/back-button.svg") no-repeat center center;
+  }
+}

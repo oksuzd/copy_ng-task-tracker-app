@@ -1,0 +1,44 @@
+:host {
+  //height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+
+  h1 {
+    text-align: center;
+  }
+
+  .add-task-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .add-selects-group {
+
+  }
+
+  .priority {
+    width: 20%;
+  }
+
+  .assigned {
+    width: 40%;
+    margin: 0 5%;
+  }
+
+  .datepicker {
+    width: 30%;
+  }
+
+  .dialog-buttons-group {
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 10px;
+
+    button {
+      width: 82px;
+    }
+  }
+}
