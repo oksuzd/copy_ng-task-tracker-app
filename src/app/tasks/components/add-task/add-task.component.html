@@ -32,7 +32,10 @@
 
       <mat-form-field class="datepicker">
         <mat-label>MM/DD/YYYY</mat-label>
-        <input matInput [matDatepicker]="datepicker">
+        <input matInput [matDatepicker]="datepicker"
+               (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)"
+        >
+
         <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
         <mat-datepicker #datepicker>
           <mat-datepicker-actions>
@@ -45,7 +48,8 @@
   </form>
 </div>
 <div mat-dialog-actions class="dialog-buttons-group">
+<!--  <button mat-raised-button color="primary" [mat-dialog-close]="true">Save</button>-->
   <button mat-raised-button color="primary" [mat-dialog-close]="true">Save</button>
   <button mat-raised-button (click)="onNoClick()">Cancel</button>
-  <!--  <button mat-button (click)="onNoClick()" cdkFocusInitial>No</button>-->
 </div>
+

@@ -34,6 +34,7 @@ const materialModules = [
     ...materialModules,
   ],
   exports: [
+    CommonModule,
     ...materialModules,
     BackButtonComponent,
   ],

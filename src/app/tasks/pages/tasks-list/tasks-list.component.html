@@ -12,11 +12,7 @@
 </div>
 <div class="container">
   <div class="tasks-wrap">
-    <app-task-item></app-task-item>
-<!--    <a mat-button routerLink="/task/{{57768799}}">-->
-<!--      <app-task-item></app-task-item>-->
-<!--    </a>-->
-
-
+<!--    <app-task-item></app-task-item>-->
+    <app-task-item *ngFor="let task of tasks" [task]="task"></app-task-item>
   </div>
 </div>

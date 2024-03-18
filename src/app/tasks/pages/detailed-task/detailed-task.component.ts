@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./detailed-task.component.scss']
 })
 export class DetailedTaskComponent {
-
+  checked: boolean = false;
 }

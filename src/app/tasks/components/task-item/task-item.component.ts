@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Task } from '../../models/task.model';
 
 @Component({
   selector: 'app-task-item',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./task-item.component.scss']
 })
 export class TaskItemComponent {
-  checked: boolean = false;
+  // checked: boolean = false;
+  @Input() public task!: Task;
 }
