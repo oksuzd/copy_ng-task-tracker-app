@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Priority, PrioritySettings, Task } from '../../models/task.model';
 import { PRIORITIES } from "../../constants";
-// import { MatDialog } from "@angular/material/dialog";
-// import { DataService } from "../../services/data.service";
+import { Performer } from "../../../shared/models/mock.models";
 
 @Component({
   selector: 'app-task-item',
@@ -35,10 +34,9 @@ export class TaskItemComponent implements OnInit {
   getPriority(priority: Priority): PrioritySettings {
     const filtered = PRIORITIES.filter((obj) => obj.key === priority)
     return filtered[0];
-
   }
 
-  // getPriorityColor(priority: Priority): string {
-  //   return '';
-  // }
+  getPerformerInitials(performer: Performer): string {
+    return performer.firstName[0] + performer.lastName[0];
+  }
 }

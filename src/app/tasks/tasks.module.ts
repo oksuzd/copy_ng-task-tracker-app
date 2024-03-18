@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterLink } from "@angular/router";
 import { NgOptimizedImage } from "@angular/common";
 import { AddTaskComponent } from './components/add-task/add-task.component';
+import { DeleteConfirmationComponent } from './components/delete-confirmation/delete-confirmation.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { AddTaskComponent } from './components/add-task/add-task.component';
     TasksListComponent,
     DetailedTaskComponent,
     TaskItemComponent,
-    AddTaskComponent
+    AddTaskComponent,
+    DeleteConfirmationComponent
   ],
   imports: [
     FormsModule,

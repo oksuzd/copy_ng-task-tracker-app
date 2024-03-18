@@ -19,14 +19,8 @@
       <mat-form-field class="priority">
         <mat-label>Priority</mat-label>
         <mat-select
-
             formControlName="priority">
-<!--                    <mat-option value="one">P1</mat-option>-->
-<!--                    <mat-option value="two">P2</mat-option>-->
-<!--                    <mat-option value="three">P3</mat-option>-->
-<!--                    <mat-option value="four">P4</mat-option>-->
           <mat-option *ngFor="let priority of priorities" [value]="priority.key">{{priority.name}}</mat-option>
-
         </mat-select>
       </mat-form-field>
 
@@ -34,9 +28,7 @@
         <mat-label>Assigned to</mat-label>
         <mat-select
             formControlName="assignedTo">
-          >
-          <mat-option value="one">First option</mat-option>
-          <mat-option value="two">Second option</mat-option>
+          <mat-option *ngFor="let performer of performers" [value]="performer">{{getFullName(performer)}}</mat-option>
         </mat-select>
       </mat-form-field>
 

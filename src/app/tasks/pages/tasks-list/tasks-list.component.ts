@@ -13,16 +13,6 @@ import { tap } from "rxjs";
 })
 export class TasksListComponent implements OnInit {
 
-  // testTask: Task = {
-  //   id: '',
-  //   status: false,
-  //   name: 'First task',
-  //   description: 'aaaaaaaaaaaaa',
-  //   assignedTo: PERFORMERS[0],
-  //   deadline: 'Mar 29',
-  //   priority: Priority.p1
-  // };
-
   tasks: Task[] = [];
 
   constructor(
@@ -35,8 +25,7 @@ export class TasksListComponent implements OnInit {
   ngOnInit() {
     this.dataService.getTasks()
       .pipe(
-        tap((res => console.log('res', res))
-        ),
+        // tap((res => console.log('res', res)))
         // take(1),
         // takeUntil(this.notifier$),
         // catchError((err) => throwError(() => err))
@@ -45,7 +34,7 @@ export class TasksListComponent implements OnInit {
         this.tasks = data;
         // console.log('data', data);
         // console.log('date', typeof data[0].deadline);
-        this.cdr.detectChanges();
+        // this.cdr.detectChanges();
       });
   }
 
@@ -66,6 +55,7 @@ export class TasksListComponent implements OnInit {
       .subscribe((res) => {
           console.log(res);
           this.tasks.push(res);
+          this.cdr.detectChanges();
         }
       );
   }

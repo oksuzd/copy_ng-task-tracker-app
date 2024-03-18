@@ -18,7 +18,6 @@
     flex-direction: row;
   }
 
-
   .detailed-task__left {
     width: 546px;
   }
@@ -26,6 +25,13 @@
   .detailed-task__right {
     width: 210px;
     background: $light-grey;
+  }
+
+  .task-header {
+    justify-content: center;
+  }
+  .description-content {
+    min-height: 100px;
   }
 
   .task-buttons-group {
@@ -36,5 +42,13 @@
     button {
       width: 82px;
     }
+  }
+
+  .details-subtitle {
+    font-size: 14px;
+  }
+
+  .details {
+    margin-bottom: 8px;
   }
 }
