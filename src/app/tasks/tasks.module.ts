@@ -3,7 +3,7 @@ import { TasksListComponent } from "./pages/tasks-list/tasks-list.component";
 import { DetailedTaskComponent } from "./pages/detailed-task/detailed-task.component";
 import { SharedModule } from "../shared/shared.module";
 import { TaskItemComponent } from './components/task-item/task-item.component';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterLink } from "@angular/router";
 import { NgOptimizedImage } from "@angular/common";
 import { AddTaskComponent } from './components/add-task/add-task.component';
@@ -21,6 +21,7 @@ import { AddTaskComponent } from './components/add-task/add-task.component';
     SharedModule,
     RouterLink,
     NgOptimizedImage,
+    ReactiveFormsModule,
   ],
 })
 export class TasksModule {}

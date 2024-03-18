@@ -1,3 +1,5 @@
+@import "../../../../assets/styles/colors";
+
 :host {
   display: flex;
   flex-direction: column;
@@ -23,7 +25,7 @@
 
   .detailed-task__right {
     width: 210px;
-    background: #F5F5F5;
+    background: $light-grey;
   }
 
   .task-buttons-group {

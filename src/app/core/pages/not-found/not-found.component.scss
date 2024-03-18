@@ -1,3 +1,5 @@
+@import "../../../../assets/styles/colors";
+
 :host {
   margin: auto;
 
@@ -6,7 +8,7 @@
     font-weight: 700;
     font-size: 24px;
     line-height: 28px;
-    color: #828282;
+    color: $default-grey;
   }
 
   .container {

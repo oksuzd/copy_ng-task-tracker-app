@@ -4,8 +4,13 @@
     <a class="task-name" routerLink="/task/{{57768799}}">{{task.name}}</a>
   </div>
   <div class="task-card__left">
-    <div class="performer">{{task.assignedTo.firstName[0] + task.assignedTo.lastName[0]}}</div>
-    <div class="date">{{task.deadline}}</div>
-    <div class="priority">{{task.priority}}</div>
+    <!--    {{task | json}}-->
+    <!--    <div class="performer">{{task.assignedTo.firstName[0] + task.assignedTo.lastName[0]}}</div>-->
+    <!--    <div class="performer">{{'OS'}}</div>-->
+    <div class="date">{{formatDate(task.deadline)}}</div>
+    <div class="priority"
+         [style.background-color]="getPriority(task.priority).color">
+      {{getPriority(task.priority).name}}
+    </div>
   </div>
 </mat-card>
