@@ -8,6 +8,7 @@ import { RouterLink } from "@angular/router";
 import { CommonModule, NgOptimizedImage } from "@angular/common";
 import { DeleteConfirmationComponent } from './components/delete-confirmation/delete-confirmation.component';
 import { TaskEditorComponent } from "./components/task-editor/task-editor.component";
+import { MatTooltipModule } from "@angular/material/tooltip";
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { TaskEditorComponent } from "./components/task-editor/task-editor.compon
     RouterLink,
     NgOptimizedImage,
     ReactiveFormsModule,
+    MatTooltipModule,
   ],
 })
 export class TasksModule {}

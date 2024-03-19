@@ -86,6 +86,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
         this.tasks.sort((a: Task, b: Task) => b.priority - a.priority);
         break;
     }
+    this.initialTasks = this.tasks;
     this.filterTasks();
   }
 
@@ -123,6 +124,7 @@ export class TasksListComponent implements OnInit, OnDestroy {
       )
       .subscribe((res: Task) => {
           this.tasks.push(res);
+          this.initialTasks.push(res);
           this.cdr.detectChanges();
         }
       );

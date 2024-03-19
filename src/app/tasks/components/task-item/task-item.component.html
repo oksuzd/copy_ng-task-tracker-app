@@ -3,10 +3,11 @@
     <mat-checkbox class="check-box" [(ngModel)]="task.status" (change)="onStatusChange($event)"></mat-checkbox>
     <a class="task-name" routerLink="/task/{{task.id}}">{{task.name}}</a>
   </div>
-  <div class="task-card__left">
-        <div class="performer">{{getPerformerInitials(task.assignedTo)}}</div>
+  <div class="task-card__left" >
+        <div class="performer" matTooltip="{{task.assignedTo.firstName + ' ' +task.assignedTo.lastName}}">{{getPerformerInitials(task.assignedTo)}}</div>
     <div class="date">{{formatDate(task.deadline)}}</div>
-    <div class="priority"
+    <div matTooltip="{{PRIORITY_NAMES[task.priority].name}}"
+        class="priority"
          [style.background-color]="getPriority(task.priority).color">
       {{getPriority(task.priority).name}}
     </div>

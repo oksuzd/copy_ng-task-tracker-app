@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy } from '@angular/core';
-import { Priority, PrioritySettings, Task } from '../../models/task.model';
+import { KeyName, Priority, PRIORITY_NAMES, PrioritySettings, Task } from '../../models/task.model';
 import { PRIORITIES } from "../../constants";
 import { Performer } from "../../../shared/models/mock.models";
 import { MatCheckboxChange } from "@angular/material/checkbox";
@@ -16,6 +16,8 @@ export class TaskItemComponent implements OnDestroy {
 
   private notifier$: Subject<null> = new Subject();
   @Input() public task!: Task;
+
+  protected readonly PRIORITY_NAMES: KeyName<Priority>[] = PRIORITY_NAMES;
 
   constructor(
     private dataService: DataService,
