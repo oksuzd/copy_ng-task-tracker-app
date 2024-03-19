@@ -39,9 +39,14 @@ export class TasksListComponent implements OnInit {
   }
 
   addTask(): void {
-    const dialogRef = this.dialog.open(AddTaskComponent);
+    const dialogRef = this.dialog.open(AddTaskComponent, {
+      data: {
+        id: '',
+      }
+    });
     dialogRef.afterClosed().subscribe(res => {
       !!res && this.createTask(res);
+      // console.log('res', res)
     });
   }
 
@@ -49,11 +54,11 @@ export class TasksListComponent implements OnInit {
     this.dataService.createTask(task)
       .pipe(
         // take(1),
-        // takeUntil(this.notifier$),
+        // takeUntil(this.notifier$),this.data.id
         // catchError((err) => throwError(() => err))
       )
       .subscribe((res) => {
-          console.log(res);
+          // console.log(res);
           this.tasks.push(res);
           this.cdr.detectChanges();
         }

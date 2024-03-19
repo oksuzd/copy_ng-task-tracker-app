@@ -9,7 +9,7 @@
                 <p>{{task.description}}</p>
       </mat-card-content>
       <mat-card-actions class="task-buttons-group">
-        <button mat-raised-button color="primary">Edit</button>
+        <button mat-raised-button (click)="editTask(task)" color="primary">Edit</button>
         <button mat-raised-button (click)="deleteTask(task.id)">Delete</button>
       </mat-card-actions>
     </div>

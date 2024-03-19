@@ -1,6 +1,6 @@
-<h1 mat-dialog-title>New Task</h1>
+<h1 mat-dialog-title>{{titleName}}</h1>
 <div mat-dialog-content>
-  <form [formGroup]="newTaskForm" class="add-task-form">
+  <form [formGroup]="isNewTask ? newTaskForm : editTaskForm" class="add-task-form">
     <mat-form-field class="task-name">
       <mat-label>Task Name</mat-label>
       <input matInput
@@ -51,13 +51,8 @@
   </form>
 </div>
 <div mat-dialog-actions class="dialog-buttons-group">
-  <!--  <button mat-raised-button color="primary" [mat-dialog-close]="true">Save</button>-->
   <button mat-raised-button color="primary" [mat-dialog-close]="newTaskForm.value">Save</button>
-
-  <!--  <button mat-button [disabled]="newUserForm.invalid"-->
-  <!--          [mat-dialog-close]="newUserForm.value">Add-->
-  <!--  </button>-->
-
+  <button mat-raised-button color="primary" [mat-dialog-close]="editTaskForm.value">SaveE</button>
   <button mat-raised-button (click)="onCancelClick()">Cancel</button>
 </div>
 

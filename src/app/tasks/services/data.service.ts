@@ -50,6 +50,18 @@ export class DataService {
     return of(task);
   }
 
+  updateTask(id: string, taskUpdates: Partial<Task>): Observable<Task> {
+    const tasks = this.getLocalStorageEntities();
+    const index = tasks.findIndex((task) => task.id === id);
+    if (index === -1) {
+      return throwError(() => new Error('Task not found'));
+    }
+    const updatedTask = {...tasks[index], ...taskUpdates};
+    tasks[index] = updatedTask;
+    localStorage.setItem(this.storageKey, JSON.stringify(tasks));
+    return of(updatedTask);
+  }
+
   deleteTask(id: string): Observable<boolean> {
     let tasks = this.getLocalStorageEntities();
     const initialLength = tasks.length;
