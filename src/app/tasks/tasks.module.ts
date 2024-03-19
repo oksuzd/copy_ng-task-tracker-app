@@ -5,7 +5,7 @@ import { SharedModule } from "../shared/shared.module";
 import { TaskItemComponent } from './components/task-item/task-item.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterLink } from "@angular/router";
-import { NgOptimizedImage } from "@angular/common";
+import { CommonModule, NgOptimizedImage } from "@angular/common";
 import { DeleteConfirmationComponent } from './components/delete-confirmation/delete-confirmation.component';
 import { TaskEditorComponent } from "./components/task-editor/task-editor.component";
 
@@ -19,6 +19,7 @@ import { TaskEditorComponent } from "./components/task-editor/task-editor.compon
     DeleteConfirmationComponent
   ],
   imports: [
+    CommonModule,
     FormsModule,
     SharedModule,
     RouterLink,

@@ -10,10 +10,8 @@ export class DataService {
 
   private storageKey: string = 'Tasks';
 
-  constructor() { }
-
   getTasks(): Observable<Task[]> {
-    const tasks = this.getLocalStorageEntities();
+    const tasks: Task[] = this.getLocalStorageEntities();
     return of(tasks);
   }
 
@@ -22,14 +20,47 @@ export class DataService {
       ...task,
       id: uuidv4(),
     };
-    const entities = this.getLocalStorageEntities();
+    const entities: Task[] = this.getLocalStorageEntities();
     entities.push(newTask);
     localStorage.setItem(this.storageKey, JSON.stringify(entities));
     return of(newTask);
   }
 
+  getTaskById(id: string): Observable<Task> {
+    const taskList: Task[] = this.getLocalStorageEntities();
+    const task: Task | undefined = taskList.find(task => task.id === id);
+    if (!task) {
+      return throwError(() => new Error('Entity not found'));
+    }
+    return of(task);
+  }
+
+  updateTask(updatedTask: Task): Observable<boolean> {
+    const tasks: Task[] = this.getLocalStorageEntities();
+    const index: number = tasks.findIndex(task => {
+      return task.id === updatedTask.id;
+    });
+    if (index === -1) {
+      return throwError(() => new Error('Task not found'));
+    }
+    tasks[index] = updatedTask;
+    localStorage.setItem(this.storageKey, JSON.stringify(tasks));
+    return of(true);
+  }
+
+  deleteTask(id: string): Observable<boolean> {
+    let tasks: Task[] = this.getLocalStorageEntities();
+    const initialLength: number = tasks.length;
+    tasks = tasks.filter(task => task.id !== id);
+    if (tasks.length === initialLength) {
+      return throwError(() => new Error('Task not found or could not be deleted'));
+    }
+    localStorage.setItem(this.storageKey, JSON.stringify(tasks));
+    return of(true);
+  }
+
   private getLocalStorageEntities(): Task[] {
-    const entitiesJSON = localStorage.getItem(this.storageKey);
+    const entitiesJSON: string | null = localStorage.getItem(this.storageKey);
     if (!entitiesJSON) {
       return [];
     }
@@ -39,54 +70,5 @@ export class DataService {
       throwError(() => new Error('Invalid storage data'));
       return [];
     }
-  }
-
-  getTaskById(id: string): Observable<Task> {
-    const taskList: Task[] = this.getLocalStorageEntities();
-    const task: Task | undefined = taskList.find((task) => task.id === id);
-    if (!task) {
-      return throwError(() => new Error('Entity not found'));
-    }
-    return of(task);
-  }
-
-  updateTask(updatedTask: Task): Observable<boolean> {
-    // console.log('updatedTask1', updatedTask);
-    const tasks = this.getLocalStorageEntities();
-    const index = tasks.findIndex((task) => {
-      console.log('task.id', task.id);
-      console.log('updatedTask.id', updatedTask.id);
-      return task.id === updatedTask.id
-    });
-    if (index === -1) {
-      return throwError(() => new Error('Task not found'));
-    }
-    tasks[index] = updatedTask;
-    localStorage.setItem(this.storageKey, JSON.stringify(tasks));
-    // console.log('updatedTask2', updatedTask);
-    return of(true);
-  }
-
-  // updateTask(id: string, taskUpdates: Partial<Task>): Observable<Task> {
-  //   const tasks = this.getLocalStorageEntities();
-  //   const index = tasks.findIndex((task) => task.id === id);
-  //   if (index === -1) {
-  //     return throwError(() => new Error('Task not found'));
-  //   }
-  //   const updatedTask = {...tasks[index], ...taskUpdates};
-  //   tasks[index] = updatedTask;
-  //   localStorage.setItem(this.storageKey, JSON.stringify(tasks));
-  //   return of(updatedTask);
-  // }
-
-  deleteTask(id: string): Observable<boolean> {
-    let tasks = this.getLocalStorageEntities();
-    const initialLength = tasks.length;
-    tasks = tasks.filter((task) => task.id !== id);
-    if (tasks.length === initialLength) {
-      return throwError(() => new Error('Task not found or could not be deleted'));
-    }
-    localStorage.setItem(this.storageKey, JSON.stringify(tasks));
-    return of(true);
   }
 }

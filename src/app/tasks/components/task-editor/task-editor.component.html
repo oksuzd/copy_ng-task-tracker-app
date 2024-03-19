@@ -8,16 +8,13 @@
 
     <mat-form-field class="description">
       <mat-label>Description</mat-label>
-      <textarea matInput
-                formControlName="description"
-      ></textarea>
+      <textarea matInput formControlName="description"></textarea>
     </mat-form-field>
 
     <div class="add-selects-group">
       <mat-form-field class="priority">
         <mat-label>Priority</mat-label>
-        <mat-select
-            formControlName="priority">
+        <mat-select formControlName="priority">
           <mat-option *ngFor="let priority of priorities" [value]="priority.key">{{priority.name}}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -31,11 +28,7 @@
 
       <mat-form-field class="datepicker">
         <mat-label>MM/DD/YYYY</mat-label>
-        <input matInput
-               [matDatepicker]="datepicker"
-
-               formControlName="deadline"
-        >
+        <input matInput [matDatepicker]="datepicker" formControlName="deadline">
         <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
         <mat-datepicker #datepicker>
           <mat-datepicker-actions>
@@ -48,7 +41,7 @@
   </form>
 </div>
 <div mat-dialog-actions class="dialog-buttons-group">
-  <button mat-raised-button color="primary" [disabled]="taskForm.invalid" [mat-dialog-close]="taskForm.value">Save</button>
+  <button mat-raised-button color="primary" [disabled]="taskForm.invalid" [mat-dialog-close]="taskForm.value">Save
+  </button>
   <button mat-raised-button (click)="onCancelClick()">Cancel</button>
 </div>
-

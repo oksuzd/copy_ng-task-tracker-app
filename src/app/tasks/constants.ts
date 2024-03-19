@@ -1,6 +1,6 @@
-import { Priority } from "./models/task.model";
+import { Priority, PrioritySettings } from "./models/task.model";
 
-export const PRIORITIES = [
+export const PRIORITIES: PrioritySettings[]= [
   {
     key: Priority.p1,
     name: 'P1',

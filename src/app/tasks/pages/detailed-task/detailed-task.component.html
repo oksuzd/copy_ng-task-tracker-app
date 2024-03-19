@@ -6,7 +6,7 @@
         <mat-card-title>{{task.name}}</mat-card-title>
       </mat-card-header>
       <mat-card-content class="description-content">
-                <p>{{task.description}}</p>
+        <p>{{task.description}}</p>
       </mat-card-content>
       <mat-card-actions class="task-buttons-group">
         <button mat-raised-button (click)="editTask(task)" color="primary">Edit</button>
@@ -22,8 +22,6 @@
         <mat-card-subtitle>Assigned to:</mat-card-subtitle>
         <div class="details">{{getFullName(task.assignedTo)}}</div>
       </mat-card-content>
-
     </div>
-
   </mat-card>
 </div>

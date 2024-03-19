@@ -6,7 +6,3 @@ export const getFullName = (performer: Performer | undefined): string => {
     }
     return '';
 }
-
-// export function getFullName(performer: Performer): string {
-//   return `${performer.firstName}  ${performer.lastName}`;
-// }

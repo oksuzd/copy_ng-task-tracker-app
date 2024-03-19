@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { MatDialog } from "@angular/material/dialog";
+import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { TaskEditorComponent } from "../../components/task-editor/task-editor.component";
 import { Task } from '../../models/task.model';
 import { DataService } from "../../services/data.service";
-import { catchError, Subject, take, takeUntil, tap, throwError } from "rxjs";
-import { PRIORITIES } from "../../constants";
+import { catchError, Subject, take, takeUntil, throwError } from "rxjs";
 import { FilteringService } from "../../services/filtering.service";
 
 @Component({
@@ -13,13 +12,13 @@ import { FilteringService } from "../../services/filtering.service";
   styleUrls: ['./tasks-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TasksListComponent implements OnInit, OnDestroy{
+export class TasksListComponent implements OnInit, OnDestroy {
 
-  tasks: Task[] = [];
-  selectedSort = 'nameAsc';
-  selectedFilter = 'notCompleted';
   private initialTasks: Task[] = [];
   private notifier$: Subject<null> = new Subject();
+  tasks: Task[] = [];
+  selectedSort: string = 'nameAsc';
+  selectedFilter: string = 'notCompleted';
 
   constructor(
     private dataService: DataService,
@@ -38,9 +37,6 @@ export class TasksListComponent implements OnInit, OnDestroy{
       )
       .subscribe((data) => {
         this.initialTasks = this.tasks = data;
-        // console.log('data', data);
-        // console.log('date', typeof data[0].deadline);
-        // this.cdr.detectChanges();
       });
     this.onStatusChange();
     this.sortTasks();
@@ -52,39 +48,48 @@ export class TasksListComponent implements OnInit, OnDestroy{
     this.notifier$.complete();
   }
 
-  sortTasks() {
+  onStatusChange(): void {
+    this.filterService.statusChange$
+      .pipe(
+        takeUntil(this.notifier$),
+        catchError((err) => throwError(() => err))
+      )
+      .subscribe(() => this.filterTasks());
+  }
+
+  sortTasks(): void {
     switch (this.selectedSort) {
       case 'nameAsc':
-        this.tasks.sort((a, b) => a.name.localeCompare(b.name));
+        this.tasks.sort((a: Task, b: Task ) => a.name.localeCompare(b.name));
         break;
       case 'nameDesc':
-        this.tasks.sort((a, b) => b.name.localeCompare(a.name));
+        this.tasks.sort((a: Task, b: Task) => b.name.localeCompare(a.name));
         break;
       case 'dateAsc':
-        this.tasks.sort((a, b) => {
-          const dateA = new Date(a.deadline).getTime();
-          const dateB = new Date(b.deadline).getTime();
+        this.tasks.sort((a: Task, b: Task) => {
+          const dateA: number = new Date(a.deadline).getTime();
+          const dateB: number = new Date(b.deadline).getTime();
           return dateA - dateB;
         });
         break;
       case 'dateDesc':
-        this.tasks.sort((a, b) => {
-          const dateA = new Date(a.deadline).getTime();
-          const dateB = new Date(b.deadline).getTime();
+        this.tasks.sort((a: Task, b: Task) => {
+          const dateA: number = new Date(a.deadline).getTime();
+          const dateB: number = new Date(b.deadline).getTime();
           return dateB - dateA;
         });
         break;
       case 'priorityAsc':
-        this.tasks.sort((a, b) => a.priority - b.priority);
+        this.tasks.sort((a: Task, b: Task) => a.priority - b.priority);
         break;
       case 'priorityDesc':
-        this.tasks.sort((a, b) => b.priority - a.priority);
+        this.tasks.sort((a: Task, b: Task) => b.priority - a.priority);
         break;
     }
     this.filterTasks();
   }
 
-  filterTasks() {
+  filterTasks(): void {
     switch (this.selectedFilter) {
       case 'notCompleted':
         this.tasks = this.initialTasks;
@@ -101,37 +106,25 @@ export class TasksListComponent implements OnInit, OnDestroy{
   }
 
   addTask(): void {
-    const dialogRef = this.dialog.open(TaskEditorComponent, {
-      data: {
-        id: '',
-      }
+    const dialogRef: MatDialogRef<TaskEditorComponent> = this.dialog.open(TaskEditorComponent, {
+      data: {id: ''}
     });
     dialogRef.afterClosed().subscribe(res => {
       !!res && this.createTask(res);
-      // console.log('res', res)
     });
   }
 
   private createTask(task: Task): void {
     this.dataService.createTask(task)
       .pipe(
-        // take(1),
-        // takeUntil(this.notifier$),this.data.id
-        // catchError((err) => throwError(() => err))
+        take(1),
+        takeUntil(this.notifier$),
+        catchError((err) => throwError(() => err))
       )
-      .subscribe((res) => {
-          // console.log(res);
+      .subscribe((res: Task) => {
           this.tasks.push(res);
           this.cdr.detectChanges();
         }
       );
-  }
-
-  // protected readonly PRIORITIES = PRIORITIES;
-
-  onStatusChange() {
-    this.filterService.statusChange$
-      .pipe()
-      .subscribe(() => this.filterTasks())
   }
 }

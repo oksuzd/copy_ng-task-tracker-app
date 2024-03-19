@@ -22,7 +22,3 @@ export interface PrioritySettings {
   name: string;
   color: string,
 }
-
-// export interface Sorting {
-//
-// }
