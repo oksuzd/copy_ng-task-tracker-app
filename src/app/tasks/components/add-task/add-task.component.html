@@ -1,11 +1,9 @@
 <h1 mat-dialog-title>{{titleName}}</h1>
 <div mat-dialog-content>
-  <form [formGroup]="isNewTask ? newTaskForm : editTaskForm" class="add-task-form">
+  <form [formGroup]="taskForm" class="add-task-form">
     <mat-form-field class="task-name">
       <mat-label>Task Name</mat-label>
-      <input matInput
-             formControlName="name"
-      >
+      <input matInput formControlName="name">
     </mat-form-field>
 
     <mat-form-field class="description">
@@ -26,8 +24,7 @@
 
       <mat-form-field class="assigned">
         <mat-label>Assigned to</mat-label>
-        <mat-select
-            formControlName="assignedTo">
+        <mat-select formControlName="assignedTo" [compareWith]="compareFn">
           <mat-option *ngFor="let performer of performers" [value]="performer">{{getFullName(performer)}}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -51,8 +48,7 @@
   </form>
 </div>
 <div mat-dialog-actions class="dialog-buttons-group">
-  <button mat-raised-button color="primary" [mat-dialog-close]="newTaskForm.value">Save</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="editTaskForm.value">SaveE</button>
+  <button mat-raised-button color="primary" [disabled]="taskForm.invalid" [mat-dialog-close]="taskForm.value">Save</button>
   <button mat-raised-button (click)="onCancelClick()">Cancel</button>
 </div>
 

@@ -6,8 +6,7 @@ import { getFullName } from '../../helpers/helpers';
 import { MatDialog } from "@angular/material/dialog";
 import { DeleteConfirmationComponent } from "../../components/delete-confirmation/delete-confirmation.component";
 import { AddTaskComponent } from "../../components/add-task/add-task.component";
-
-// import { Performer } from "../../../shared/models/mock.models";
+import { tap } from "rxjs";
 
 
 @Component({
@@ -39,9 +38,6 @@ export class DetailedTaskComponent implements OnInit {
       )
       .subscribe((data) => {
         this.task = data;
-        // console.log('data', data);
-        // console.log('date', typeof data[0].deadline);
-        // this.cdr.detectChanges();
       });
   }
 
@@ -59,19 +55,19 @@ export class DetailedTaskComponent implements OnInit {
   }
 
   updateTask(task: Task) {
-    this.dataService.updateTask(task.id, task)
+    console.log('task', task);
+    this.dataService.updateTask(task)
       .pipe(
+        tap((task => console.log('tap', task)))
         // take(1),
         // takeUntil(this.notifier$),this.data.id
         // catchError((err) => throwError(() => err))
       )
       .subscribe((res) => {
           console.log(res);
-          // this.tasks.push(res);
-          // if (res) {
-          //
-          // }
-          this.task = res;
+          if (res) {
+            this.task = task;
+          }
           this.cdr.detectChanges();
         }
       );
@@ -98,8 +94,4 @@ export class DetailedTaskComponent implements OnInit {
       }
     });
   }
-
-  // getFullName(performer: Performer): string {
-  //   return `${performer.firstName}  ${performer.lastName}`;
-  // }
 }
