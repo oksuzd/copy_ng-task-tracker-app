@@ -8,12 +8,12 @@ import { PERFORMERS } from "../../../shared/mock/mock-data";
 import { getFullName } from "../../helpers/helpers";
 
 @Component({
-  selector: 'app-add-task',
-  templateUrl: './add-task.component.html',
-  styleUrls: ['./add-task.component.scss'],
+  selector: 'task-editor',
+  templateUrl: './task-editor.component.html',
+  styleUrls: ['./task-editor.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AddTaskComponent implements OnInit {
+export class TaskEditorComponent implements OnInit {
   titleName: string = '';
   isNewTask: boolean = false;
   priorities: PrioritySettings[] = PRIORITIES;
@@ -34,7 +34,7 @@ export class AddTaskComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private cdr: ChangeDetectorRef,
-    public dialogRef: MatDialogRef<AddTaskComponent>,
+    public dialogRef: MatDialogRef<TaskEditorComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Partial<Task>
   ) {
   }

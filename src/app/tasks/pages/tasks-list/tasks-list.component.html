@@ -1,8 +1,28 @@
 <div class="toolbar">
   <div class="container toolbar-wrap">
     <div class="settings">
-      <span class="filter">Filter</span>
-      <span class="sorting">Sorting</span>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Filtering</mat-label>
+        <mat-select class="select" [(value)]="selectedFilter" (selectionChange)="filterTasks()">
+          <mat-option value="notCompleted">Not Completed</mat-option>
+          <mat-option value="completed">Completed</mat-option>
+          <mat-option value="all">All</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Sorting</mat-label>
+        <mat-select class="select" [(value)]="selectedSort" (selectionChange)="sortTasks()">
+          <mat-option value="nameAsc">Name (Ascending)</mat-option>
+          <mat-option value="nameDesc">Name (Descending)</mat-option>
+          <mat-option value="dateAsc">Date (Ascending)</mat-option>
+          <mat-option value="dateDesc">Date (Descending)</mat-option>
+          <mat-option value="priorityAsc">Priority (Ascending)</mat-option>
+          <mat-option value="priorityDesc">Priority (Descending)</mat-option>
+        </mat-select>
+      </mat-form-field>
+
     </div>
     <button mat-raised-button color="primary" class="add-button" (click)="addTask()">
       <span>Add Task</span>

@@ -5,7 +5,7 @@ import { DataService } from "../../services/data.service";
 import { getFullName } from '../../helpers/helpers';
 import { MatDialog } from "@angular/material/dialog";
 import { DeleteConfirmationComponent } from "../../components/delete-confirmation/delete-confirmation.component";
-import { AddTaskComponent } from "../../components/add-task/add-task.component";
+import { TaskEditorComponent } from "../../components/task-editor/task-editor.component";
 import { tap } from "rxjs";
 
 
@@ -46,7 +46,7 @@ export class DetailedTaskComponent implements OnInit {
   }
 
   editTask(task: Task) {
-    const dialogRef = this.dialog.open(AddTaskComponent, {
+    const dialogRef = this.dialog.open(TaskEditorComponent, {
       data: task
     });
     dialogRef.afterClosed().subscribe(res => {

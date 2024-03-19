@@ -23,6 +23,7 @@
     .toolbar-wrap {
       display: flex;
       justify-content: space-between;
+      align-items: center;
     }
 
     .add-button{
@@ -40,5 +41,16 @@
     margin: 14px 0;
   }
 
+  .settings {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+    padding-top: 10px;
+  }
+
+  .select {
+    font-size: 14px;
+  }
 
 }
