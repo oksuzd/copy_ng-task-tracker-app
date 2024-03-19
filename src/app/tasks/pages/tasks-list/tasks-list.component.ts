@@ -60,10 +60,10 @@ export class TasksListComponent implements OnInit, OnDestroy {
   sortTasks(): void {
     switch (this.selectedSort) {
       case 'nameAsc':
-        this.tasks.sort((a: Task, b: Task ) => a.name.localeCompare(b.name));
+        this.tasks.sort((a: Task, b: Task ) => a.name?.localeCompare(b.name));
         break;
       case 'nameDesc':
-        this.tasks.sort((a: Task, b: Task) => b.name.localeCompare(a.name));
+        this.tasks.sort((a: Task, b: Task) => b.name?.localeCompare(a.name));
         break;
       case 'dateAsc':
         this.tasks.sort((a: Task, b: Task) => {
